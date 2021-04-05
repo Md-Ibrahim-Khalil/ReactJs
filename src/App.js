@@ -5,30 +5,35 @@ import { isArrayEmpty as isMyArrayEmpty } from './Utils';
 import './App.css';
 
 class App extends Component {
-  state ={
-    showBlogs: true,
+  constructor(props) {
+    super(props);
+      this.state = {
+        showBlogs: true,
 
-    blogArr: [
-    {
-      id: 1,
-      title: 'Blog Title 1',
-      description: 'John Wick John WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn Wick',
-      likeCount: 0,
-    },
-    {
-      id: 2,
-      title: 'Blog Title 2',
-      description: 'John Wick John WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn Wick',
-      likeCount: 0,
-    },
-    {
-      id: 3,
-      title: 'Blog Title 3',
-      description: 'John Wick John WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn Wick',
-      likeCount: 0,
+        blogArr: [
+          {
+            id: 1,
+            title: 'Blog Title 1',
+            description: 'John Wick John WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn Wick',
+            likeCount: 0,
+          },
+          {
+            id: 2,
+            title: 'Blog Title 2',
+            description: 'John Wick John WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn Wick',
+            likeCount: 0,
+          },
+          {
+            id: 3,
+            title: 'Blog Title 3',
+            description: 'John Wick John WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn WickJohn Wick',
+            likeCount: 0,
+          }
+        ]
+      }
+      console.log('Inside Constructor');
     }
-  ]
-}
+  
  
   onLikeBtnClick = (pos) => {
     const updatedBlogList = this.state.blogArr;
@@ -54,8 +59,24 @@ class App extends Component {
     console.log(this.state.showBlogs);
   }
 
+  shouldComponentUpdate(){
+    console.log('Inside ShouldComponentUpdate');
+    return true;
+  }
+
+  componentDidMount() {
+    console.log('Component Did Mount');
+  }
+
+  componentWillUnmount() {
+    console.log('Component UnMounting');
+  }
+  componentDidUpdate() {
+    console.log('Inside ComponentDidUpdate');
+  }
+
   render() {
-    console.log('Render Called');
+    console.log('Render Called for AppJs');
     console.log(this.state);
 
     const blogCards = isMyArrayEmpty(this.state.blogArr) ? [] : this.state.blogArr.map((item, pos) => {
